@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="taskJs.js"></script>
+<body>
+<h2>HELLO</h2>
+<div class="item-grid-card item-grid-card--show-meta">
+    <div data-controller="audio-player"
+         data-audio-player-waveform-url-value="https://assets.mixkit.co/music/preview/mixkit-hazy-after-hours-132.json"
+         data-audio-player-preview-url-value="https://assets.mixkit.co/music/preview/mixkit-hazy-after-hours-132.mp3"
+         data-audio-player-item-id-for-ga3-events-value="132" data-audio-player-item-type-for-ga3-events-value="music"
+         data-audio-player-wave-color-value="#000000">
+    </div>
+    <div class="item-grid-card__meta">
+        <h2 class="item-grid-card__title">
+            Hazy After Hours
+        </h2>
+        <p class="item-grid-music-preview__author">
+            by Alejandro Magaña (A. M.)
+        </p>
+    </div>
+
+</div>
+
+<div class="item-grid-card item-grid-card--show-meta">
+    <div data-controller="audio-player"
+         data-audio-player-preview-url-value="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3"></div>
+    <h2></h2>
+    <h2 class="item-grid-card__title">
+        Tech House vibes
+    </h2>
+    <p class="item-grid-music-preview__author">
+        by Alejandro Magaña (A. M.)
+    </p>
+</div>
+<script>
+
+    let array = []
+    function explorer(htmlElement) {
+            let ind = htmlElement.querySelectorAll('.item-grid-card');
+            for (let i = 0; i < ind.length; i++) {
+                const indElementElement = ind[i];
+                let title = indElementElement.querySelector(".item-grid-card__title");
+                let auther = indElementElement.querySelector('.item-grid-music-preview__author');
+                let mp3 = indElementElement.querySelector("[data-audio-player-preview-url-value]");
+                   array.push({
+                       title: title.innerText,
+                       auther: auther.innerText,
+                       mp3: mp3.dataset.audioPlayerPreviewUrlValue
+                   })
+            }
+    }
+    explorer(document.body);
+    console.log(array);
+</script>
+</body>
+</html>
